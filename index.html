@@ -143,7 +143,7 @@ tr:hover td { background: var(--gray-50); }
 // ========== SUPABASE CONFIG ==========
 const SUPABASE_URL = 'https://ejajlvjanberkkczrxci.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqYWpsdmphbmJlcmtrY3pyeGNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5MDc1MjcsImV4cCI6MjA5MDQ4MzUyN30.SfB4J8xtNbyB6sSm8N0sI6HfUlrzWVsP2k-xsZRHgEI';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ========== DATA LAYER (Supabase) ==========
 // Map DB row to frontend object
@@ -191,31 +191,31 @@ function mapOrderFromDB(row) {
 }
 
 async function fetchArticles() {
-  const { data, error } = await supabase.from('articles').select('*').order('id');
+  const { data, error } = await sb.from('articles').select('*').order('id');
   if (error) { console.error('Fetch articles error:', error); return []; }
   return data.map(mapArticleFromDB);
 }
 
 async function fetchOrders() {
-  const { data, error } = await supabase.from('orders').select('*').order('id');
+  const { data, error } = await sb.from('orders').select('*').order('id');
   if (error) { console.error('Fetch orders error:', error); return []; }
   return data.map(mapOrderFromDB);
 }
 
 async function insertArticle(a) {
-  const { data, error } = await supabase.from('articles').insert(mapArticleToDB(a)).select().single();
+  const { data, error } = await sb.from('articles').insert(mapArticleToDB(a)).select().single();
   if (error) { console.error('Insert article error:', error); return null; }
   return mapArticleFromDB(data);
 }
 
 async function updateArticleDB(id, a) {
-  const { data, error } = await supabase.from('articles').update(mapArticleToDB(a)).eq('id', id).select().single();
+  const { data, error } = await sb.from('articles').update(mapArticleToDB(a)).eq('id', id).select().single();
   if (error) { console.error('Update article error:', error); return null; }
   return mapArticleFromDB(data);
 }
 
 async function deleteArticleDB(id) {
-  const { error } = await supabase.from('articles').delete().eq('id', id);
+  const { error } = await sb.from('articles').delete().eq('id', id);
   if (error) { console.error('Delete article error:', error); return false; }
   return true;
 }
@@ -233,23 +233,23 @@ async function insertOrder(o) {
     datum: o.datum || '',
     status: o.status || 'offen'
   };
-  const { data, error } = await supabase.from('orders').insert(row).select().single();
+  const { data, error } = await sb.from('orders').insert(row).select().single();
   if (error) { console.error('Insert order error:', error); return null; }
   return mapOrderFromDB(data);
 }
 
 async function updateOrderStatusDB(id, status) {
-  const { error } = await supabase.from('orders').update({ status }).eq('id', id);
+  const { error } = await sb.from('orders').update({ status }).eq('id', id);
   if (error) console.error('Update order error:', error);
 }
 
 async function deleteOrderDB(id) {
-  const { error } = await supabase.from('orders').delete().eq('id', id);
+  const { error } = await sb.from('orders').delete().eq('id', id);
   if (error) console.error('Delete order error:', error);
 }
 
 async function deleteAllOrdersDB() {
-  const { error } = await supabase.from('orders').delete().neq('id', 0);
+  const { error } = await sb.from('orders').delete().neq('id', 0);
   if (error) console.error('Delete all orders error:', error);
 }
 
