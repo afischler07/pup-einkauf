@@ -141,8 +141,8 @@ tr:hover td { background: var(--gray-50); }
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 // ========== SUPABASE CONFIG ==========
-const SUPABASE_URL = 'https://ejajlvjanberkkczrxci.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqYWpsdmphbmJlcmtrY3pyeGNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5MDc1MjcsImV4cCI6MjA5MDQ4MzUyN30.SfB4J8xtNbyB6sSm8N0sI6HfUlrzWVsP2k-xsZRHgEI';
+const SUPABASE_URL = 'https://yxescfmixyridbmltrkj.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl4ZXNjZm1peHlyaWRibWx0cmtqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxOTQ5MzIsImV4cCI6MjA5MDc3MDkzMn0.eFHbjps4ygv1tfCbj0tmlP5k6j6geLcxApRzwPg1Ok8';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ========== DATA LAYER (Supabase) ==========
@@ -301,17 +301,17 @@ function getCategoryIcon(a) {
   if (n.includes('solar') || n.includes('modul')) return '\u2600\uFE0F';
   if (n.includes('kabel') || n.includes('cable') || n.includes('usb') || n.includes('litze') || n.includes('stranded')) return '\u{1F50C}';
   if (n.includes('schraube') || n.includes('screw')) return '\u{1F529}';
-  if (n.includes('bürste') || n.includes('brush')) return '\u{1FA92}';
+  if (n.includes('bÃ¼rste') || n.includes('brush')) return '\u{1FA92}';
   if (n.includes('dichtung') || n.includes('gasket') || n.includes('seal')) return '\u2B55';
   if (n.includes('klemme') || n.includes('connector') || n.includes('terminal') || n.includes('splicing')) return '\u26A1';
   if (n.includes('adapter') || n.includes('kupplung')) return '\u{1F500}';
   if (n.includes('spanngurt') || n.includes('spanngummi')) return '\u{1F517}';
   if (n.includes('haken') || n.includes('hook')) return '\u{1FA9D}';
   if (n.includes('band') || n.includes('scharnier') || n.includes('klavierband')) return '\u{1F4CF}';
-  if (n.includes('müllex') || n.includes('peka') || n.includes('eimer')) return '\u{1F5D1}\uFE0F';
+  if (n.includes('mÃ¼llex') || n.includes('peka') || n.includes('eimer')) return '\u{1F5D1}\uFE0F';
   if (n.includes('blum') || n.includes('clip') || n.includes('montageplatte')) return '\u{1F4CE}';
   if (n.includes('ring') || n.includes('kabelschuh')) return '\u{1F534}';
-  if (n.includes('schlüssel') || n.includes('wrench') || n.includes('tool')) return '\u{1F527}';
+  if (n.includes('schlÃ¼ssel') || n.includes('wrench') || n.includes('tool')) return '\u{1F527}';
   return getInitials(a.bezeichnung);
 }
 function googleImageSearch(term) { return `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(term)}`; }
@@ -425,7 +425,7 @@ function renderCard(a) {
             <button class="btn-icon" title="Bearbeiten" onclick="openEditArticle(${a.id})">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             </button>
-            <button class="btn-icon danger" title="Löschen" onclick="deleteArticle(${a.id})">
+            <button class="btn-icon danger" title="LÃ¶schen" onclick="deleteArticle(${a.id})">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
             </button>
             ${a.url && a.url.startsWith('http') ? `
@@ -467,7 +467,7 @@ function renderBestellungen() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             CSV Export
           </button>
-          <button class="btn btn-danger" onclick="clearOrders()">Alle löschen</button>
+          <button class="btn btn-danger" onclick="clearOrders()">Alle lÃ¶schen</button>
         ` : ''}
       </div>
     </div>
@@ -475,7 +475,7 @@ function renderBestellungen() {
       <div class="empty-state">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
         <p>Keine Bestellungen vorhanden</p>
-        <p style="font-size:13px">Gehe zum Katalog und bestelle Artikel über den "Bestellen"-Button.</p>
+        <p style="font-size:13px">Gehe zum Katalog und bestelle Artikel Ã¼ber den "Bestellen"-Button.</p>
       </div>
     ` : `
       <div class="table-wrap">
@@ -574,13 +574,13 @@ function renderModal() {
           <div class="form-group">
             <label>Bild-URL</label>
             <div style="display:flex;gap:8px">
-              <input type="url" name="bild" value="${esc(a.bild || '')}" placeholder="https://... (Bild-URL einfügen)" style="flex:1">
+              <input type="url" name="bild" value="${esc(a.bild || '')}" placeholder="https://... (Bild-URL einfÃ¼gen)" style="flex:1">
               <button type="button" class="btn btn-outline btn-sm" onclick="openImageSearch()">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 Bilder suchen
               </button>
             </div>
-            <div style="font-size:11px;color:var(--gray-400);margin-top:4px">Klicke "Bilder suchen", um Google Bilder für diesen Artikel zu öffnen. Kopiere dann die Bild-URL hierhin.</div>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:4px">Klicke "Bilder suchen", um Google Bilder fÃ¼r diesen Artikel zu Ã¶ffnen. Kopiere dann die Bild-URL hierhin.</div>
           </div>
           <div class="form-group">
             <label>Kategorie</label>
@@ -651,11 +651,11 @@ async function saveArticleForm(e) {
 
 async function deleteArticle(id) {
   const a = state.articles.find(a => a.id === id);
-  if (!confirm(`Artikel "${a.bezeichnung}" wirklich löschen?`)) return;
+  if (!confirm(`Artikel "${a.bezeichnung}" wirklich lÃ¶schen?`)) return;
   const ok = await deleteArticleDB(id);
   if (ok) {
     state.articles = state.articles.filter(a => a.id !== id);
-    showToast('Artikel gelöscht');
+    showToast('Artikel gelÃ¶scht');
     render();
   }
 }
@@ -681,7 +681,7 @@ async function addToOrder(articleId) {
   if (created) {
     state.orders.push(created);
     delete state.orderQty[articleId];
-    showToast(`${qty}x "${a.bezeichnung}" zur Bestellliste hinzugefügt`);
+    showToast(`${qty}x "${a.bezeichnung}" zur Bestellliste hinzugefÃ¼gt`);
     render();
   }
 }
@@ -700,7 +700,7 @@ async function updateOrderStatus(id, status) {
 }
 
 async function clearOrders() {
-  if (!confirm('Alle Bestellungen wirklich löschen?')) return;
+  if (!confirm('Alle Bestellungen wirklich lÃ¶schen?')) return;
   await deleteAllOrdersDB();
   state.orders = [];
   showToast('Bestellliste geleert');
